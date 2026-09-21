@@ -30,10 +30,6 @@ flowchart TD
     QA -->|passed = yes| END
     QA -->|passed = no| DEV
 ```
-## TODO
-
-* [ ] Add agent observability with LangSmith
-
 ## Developer file tools
 
 The Developer can use three tools while implementing a requirement:
