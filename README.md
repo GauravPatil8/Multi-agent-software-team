@@ -1,4 +1,4 @@
-# Agentic AI Project
+# Multi Agent Software Development Team
 
 This project is an agentic software development workflow built with LangGraph and LLM-powered agents. It takes a user requirement and guides it through a multi-step delivery pipeline involving architecture design, research, implementation, review, and QA.
 
