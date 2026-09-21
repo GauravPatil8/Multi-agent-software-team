@@ -30,6 +30,10 @@ flowchart TD
     QA -->|passed = yes| END
     QA -->|passed = no| DEV
 ```
+## TODO
+
+* [ ] Add agent observability with LangSmith
+* [ ] Add tool calling for creating and editing file
 
 ## Role breakdown
 
