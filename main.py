@@ -15,16 +15,28 @@ def root():
         "message": "server started"
     }
 
-@app.get("/projects")
-async def create_project(request: ProjectRequest):
-    initial_state = {
-        "requirement": request.requirement,
-        "next_agent": "",
-        "supervisor_reason": ""
+@app.post("/projects")
+async def create_project(request:ProjectRequest):
+    initial_state={
+        "requirement":request.requirement,
+        "next_agent":"",
+        "architecture":None,
+        "research":None,
+        "implementation":None,
+        "review":None,
+        "qa":None,
+        "iteration":0,
+        "supervisor_reason":""
     }
-
+    
     result = await graph.ainvoke(initial_state)
-
+    
     return {
-        "requirement": result["requirement"]
+        "requirement":result["requirement"],
+        "architecture":result["architecture"],
+        "research":result["research"],
+        "implementation":result["implementation"],
+        "qa":result["qa"],
+        "iteration":result["iteration"],
+        "review":result["review"]
     }
