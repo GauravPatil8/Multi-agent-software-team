@@ -32,6 +32,8 @@ class ReviewState(TypedDict):
 
 class ProjectState(TypedDict):
     requirement:str
+    project_directory:str
+    project_memory:dict
     architecture:ArchitectState | None
     research:ResearchState | None
     implementation:ImplementationState | None

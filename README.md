@@ -33,7 +33,35 @@ flowchart TD
 ## TODO
 
 * [ ] Add agent observability with LangSmith
-* [ ] Add tool calling for creating and editing file
+
+## Developer file tools
+
+The Developer can use three tools while implementing a requirement:
+
+- `analyze_folder` lists existing files in the destination folder.
+- `create_file` creates a new project file and refuses to overwrite an existing file.
+- `edit_file_lines` replaces an inclusive, 1-based line range in an existing file.
+- `delete_file_lines` removes an inclusive, 1-based line range from an existing file.
+
+All paths are restricted to the project directory. Tool results are passed back to
+the Developer before it returns the implementation summary.
+
+## Persistent project memory
+
+After a workflow completes, the system stores project-specific memory in a SQLite
+database at:
+
+```text
+<project_directory>/.agents/project_memory.db
+```
+
+When a project directory is received, the system checks for this database first.
+The next request for the same directory loads this memory and provides it to
+the Architect, Researcher, Developer, Supervisor, and QA agents. It contains the
+latest requirement, architecture, research, implementation, review, and QA
+results, and is separate for every project directory. Older databases under
+`.agent` are still read for compatibility. SQLite is provided by Python's
+standard library, so no extra package is required.
 
 ## Role breakdown
 
@@ -148,9 +176,13 @@ Example JSON body:
 
 ```json
 {
-  "requirement": "Build a simple todo API in Python with FastAPI"
+  "requirement": "Build a simple todo API in Python with FastAPI",
+  "project_directory": "C:/Padhai/projects/generated_todo_api"
 }
 ```
+
+`project_directory` must be an existing directory. Generated files use paths
+relative to that directory, and the file tools cannot write outside it.
 
 The API will return the generated architecture, research notes, implementation, QA status, and iteration details.
 
