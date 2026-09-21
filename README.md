@@ -173,7 +173,7 @@ Example JSON body:
 ```json
 {
   "requirement": "Build a simple todo API in Python with FastAPI",
-  "project_directory": "C:/Padhai/projects/generated_todo_api"
+  "project_directory": "C:/projects/generated_todo_api"
 }
 ```
 
