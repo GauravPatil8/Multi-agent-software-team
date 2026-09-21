@@ -14,11 +14,14 @@ async def review_code(state:ProjectState):
     
     Requirement:
     {state["requirement"]}
+
+    Persistent project memory:
+    {state["project_memory"]}
     
     Architecture:
     {state["architecture"]}
     
-    Reseach:
+    Research:
     {state["research"]}
     
     Implementation:
@@ -99,10 +102,13 @@ async def supervisor_node(state:ProjectState):
     prompt=f"""
     You are the Tech Lead of an AI software development team.
     
-    Your responsibilty is to decide what should happen next.
+    Your responsibility is to decide what should happen next.
     
     Project requirement:
     {state["requirement"]}
+
+    Persistent project memory:
+    {state["project_memory"]}
     
     Architecture:
     {state["architecture"]}
@@ -129,7 +135,7 @@ async def supervisor_node(state:ProjectState):
     
     
     Rules:
-    - If architecture is missiing , choose architect.
+    - If architecture is missing, choose architect.
     - If architecture exists but research is missing , choose researcher.
     - If research exists but implementation is missing , choose developer.
     - If implementation exists but has not been reviewed, choose developer or qa according to the  Tech Lead Review

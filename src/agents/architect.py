@@ -12,6 +12,9 @@ async def architect_node(state:ProjectState):
     
     Project requirement:
     {state["requirement"]}
+
+    Persistent project memory:
+    {state["project_memory"]}
     
     Create a practical architecture.
     

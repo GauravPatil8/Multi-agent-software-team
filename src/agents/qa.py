@@ -14,6 +14,9 @@ async def qa_node(state:ProjectState):
     
     Requirement:
     {state["requirement"]}
+
+    Persistent project memory:
+    {state["project_memory"]}
     
     Architecture:
     {state["architecture"]}

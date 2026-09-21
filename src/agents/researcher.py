@@ -12,6 +12,9 @@ async def researcher_node(state:ProjectState):
     
     Project requirement:
     {state["requirement"]}
+
+    Persistent project memory:
+    {state["project_memory"]}
     
     Current architecture:
     {state["architecture"]}
