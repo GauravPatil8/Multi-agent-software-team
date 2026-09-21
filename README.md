@@ -91,6 +91,65 @@ This makes the graph stateful and allows the agent loop to reason over increment
 - [src/agents/developer.py](src/agents/developer.py) defines the implementation agent.
 - [src/agents/qa.py](src/agents/qa.py) defines the QA agent.
 
+## Setup instructions
+
+### 1. Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate it:
+
+```bash
+# Windows
+.venv\Scripts\activate
+
+# macOS / Linux
+source .venv/bin/activate
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Add your Gemini API key
+
+Create a file named `.env` in the project root and add:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+MODEL=gemini-2.5-flash
+```
+
+You can change the model name if you want to use a different Gemini model supported by your account.
+
+### 4. Run the app
+
+Start the FastAPI server:
+
+```bash
+uvicorn main:app --reload
+```
+
+Then send a POST request to:
+
+```text
+http://127.0.0.1:8000/projects
+```
+
+Example JSON body:
+
+```json
+{
+  "requirement": "Build a simple todo API in Python with FastAPI"
+}
+```
+
+The API will return the generated architecture, research notes, implementation, QA status, and iteration details.
+
 ## Summary
 
 This repository is a small multi-agent development loop that mimics a real software team. It is a practical example of agentic orchestration: plan, research, build, review, and validate in a loop until the desired result is reached.
